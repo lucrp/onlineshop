@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+    web-nginx:
+        image: nginx:stable-alpine
+        container_name: web-nginx
+        volumes:
+            - "./docker-web/www:/usr/share/nginx/html/public:ro"
+            - "./docker-web/log:/var/log/nginx"
+            - "./docker-web/nginx.conf:/etc/nginx/nginx.conf:ro"
+        ports:
+            - "127.0.0.1:80:80"
+
+    web-php:
+        build: ./docker-web/.build-php
+        container_name: web-php
+        volumes:
+            - "./docker-web/www:/script:ro"
+
+    web-pgsql:
+        image: postgres:alpine
+        container_name: web-pgsql
+        volumes:
+            - "./docker-web/data:/var/lib/postgresql/data"
+        environment:
+            POSTGRES_USER: onlineshop
+            POSTGRES_PASSWORD: onlineshop
+            POSTGRES_DB: onlineshop

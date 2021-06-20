@@ -1,0 +1,10 @@
+TODO
+
+- configure Nginx to get /public as root and not allow access in database folder
+How it is now: http://localhost/public/admin/login.php
+Expected : http://localhost/admin/login.php
+
+- create function for get one post
+
+- create flash message
+
