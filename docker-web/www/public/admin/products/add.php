@@ -16,7 +16,7 @@ if (is_post()) {
     $query->execute([$_POST['name'], $_POST['description']]);
 
     flash_success("Le produit {$_POST['name']} a bien été ajouté !");
-    redirect('/public/admin/products/index.php');
+    redirect('/admin/products/index.php');
 }
 
 ?>

@@ -14,6 +14,6 @@ $product = find_product($_GET['id']);
 $query = pdo()->prepare('DELETE FROM products WHERE id = ?');
 $query->execute([$product->id]);
 flash_success("Le produit « $product->name » a bien été supprimé");
-redirect("/public/admin/products/index.php");
+redirect("/admin/products/index.php");
 
 

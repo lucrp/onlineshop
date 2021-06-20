@@ -26,7 +26,7 @@ if (is_post()) {
     $query->execute([$_POST['name'], $_POST['description'], $product->id]);
 
     flash_success("Le produit « $product->name » a bien été enregistré !");
-    redirect("/public/admin/products/edit.php?id=$product->id");
+    redirect("/admin/products/edit.php?id=$product->id");
 }
 
 ?>

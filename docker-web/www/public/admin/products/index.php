@@ -21,8 +21,8 @@ $products = $query->fetchAll(PDO::FETCH_CLASS, Product::class);
         <h2 class="text-lg"><?= "« $product->name »" ?></h2>
         <p><?= $product->description ?></p>
         <div class="flex -mx-2 py-3 text-sm border-t pt-1 mt-1">
-            <a class="mx-2" href="/public/admin/products/edit.php?id=<?= $product->id ?>">Modifier</a>
-            <form class="mx-2" method="post" action="/public/admin/products/delete.php?id=<?=$product->id?>">
+            <a class="mx-2" href="/admin/products/edit.php?id=<?= $product->id ?>">Modifier</a>
+            <form class="mx-2" method="post" action="/admin/products/delete.php?id=<?=$product->id?>">
                 <button>Supprimer</button>
             </form>
         </div>
