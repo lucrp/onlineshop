@@ -1,2 +1,8 @@
 # onlineshop
-Ecommerce with PHP without framework
+Site ecommerce en PHP sans framework configuré sur des containers Docker (PostgreSQL, NGINX et PHP-FPM-Alpine)
+
+## Installation
+### Prerequisites
+- Docker
+
+
