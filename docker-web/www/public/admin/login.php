@@ -30,14 +30,14 @@ if (is_post()) {
     <div class="bg-white shadow-lg p-8 mt-8">
         <h1 class="text-xl mb-4 text-center">Connexion Admin</h1>
         <form method="post">
-            <?php if (isset($previous_errors['credentials'])) : ?>
+            <?php if (get_previous_error('credentials')) : ?>
                 <p class="border border-red-900 w-full bg-red-100 text-red-900 mb-4 px-3 py-1 text-sm text-red-500">
-                    <?= $previous_errors['credentials'] ?>
+                    <?= get_previous_error('credentials') ?>
                 </p>
             <?php endif; ?>
             <p class="mb-4">
                 <label for="name" class="block text-sm">Nom :</label>
-                <input type="text" name="name" id="name" class="border border-gray focus:border-black px-4 py-1 w-full" value="<?= $previous_inputs['name'] ?? '' ?>" required>
+                <input type="text" name="name" id="name" class="border border-gray focus:border-black px-4 py-1 w-full" value="<?= get_previous_input('name') ?>" required>
             </p>
             <p class="mb-4">
                 <label for="password" class="block text-sm">Mot de passe :</label>
