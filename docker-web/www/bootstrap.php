@@ -6,12 +6,9 @@ session_start();
 
 global $flash;
 if (is_post()) {
-    $previous_errors = [];
     $previous_inputs = [];
 } else {
-    $previous_errors = $_SESSION['previous_errors'] ?? [];
     $previous_inputs = $_SESSION['previous_inputs'] ?? [];
-    $_SESSION['previous_errors'] = [];
     $_SESSION['previous_inputs'] = [];
 }
 
@@ -74,8 +71,26 @@ function save_inputs()
         if (in_array($key, ['password'])) {
             continue;
         }
+        $_SESSION['previous_inputs'] =  $_SESSION['previous_inputs'] ?? [];
         $_SESSION['previous_inputs'][$key] = $value;
     }
+}
+
+function get_previous_inputs()
+{
+    static $previous_inputs;
+    if ($previous_inputs) {
+        return $previous_inputs;
+    }
+
+    $previous_inputs = $_SESSION['previous_inputs'] ?? [];
+    $_SESSION['previous_inputs'] = [];
+    return $previous_inputs;
+}
+
+function get_previous_input($key)
+{
+    return get_previous_inputs()[$key] ?? null;
 }
 
 
