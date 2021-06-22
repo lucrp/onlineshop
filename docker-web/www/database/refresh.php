@@ -18,22 +18,23 @@ END $$;
 ");
 
 $pdo->exec('CREATE TABLE admins (
-        id SERIAL,
-        name TEXT UNIQUE,  
-        password TEXT
+        id SERIAL PRIMARY KEY,
+        name TEXT UNIQUE NOT NULL,  
+        password TEXT NOT NULL
     )');
 
 $pdo->exec('CREATE TABLE categories (
-        id SERIAL,
-        slug TEXT UNIQUE,  
-        name TEXT
+        id SERIAL PRIMARY KEY,
+        slug TEXT UNIQUE NOT NULL,  
+        name TEXT NOT NULL
     )');
 
 $pdo->exec("INSERT INTO categories (slug, name) VALUES ('carnets-de-sante', 'Carnets de santé')");
 $pdo->exec("INSERT INTO categories (slug, name) VALUES ('gigoteuses', 'Gigoteuses')");
 
 $pdo->exec('CREATE TABLE products (
-        id SERIAL,
-        name TEXT,  
-        description TEXT
+        id SERIAL PRIMARY KEY,
+        category_id INTEGER NOT NULL REFERENCES categories, 
+        name TEXT NOT NULL,  
+        description TEXT NOT NULL
     )');
